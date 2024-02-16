@@ -5,16 +5,16 @@ http:
   rules:
     # Users APIs
     - selector: sternx.User.CreateUser
-      post: "/v1/users"
+      post: "/v1/users/{email}/{password}"
 
     - selector: sternx.User.GetUserById
       get: "/v1/users/{id}"
 
     - selector: sternx.User.GetUsers
-      get: "/v1/users"
+      get: "/v1/users/{page_index}/{page_size}"
 
     - selector: sternx.User.UpdateUser
-      put: "/v1/users"
+      put: "/v1/users/{id}"
 
     - selector: sternx.User.DeleteUser
       delete: "/v1/users/{id}"
