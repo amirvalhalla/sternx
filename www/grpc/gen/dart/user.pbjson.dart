@@ -97,7 +97,7 @@ const $core.Map<$core.String, $core.dynamic> UserServiceBase$json = const {
   '1': 'User',
   '2': const [
     const {'1': 'CreateUser', '2': '.sternx.CreateUserRequest', '3': '.sternx.UserResponse'},
-    const {'1': 'GetUserById', '2': '.sternx.GetUserRequest', '3': '.sternx.UserResponse'},
+    const {'1': 'GetUserByID', '2': '.sternx.GetUserRequest', '3': '.sternx.UserResponse'},
     const {'1': 'GetUsers', '2': '.sternx.GetUsersRequest', '3': '.sternx.GetUsersResponse'},
     const {'1': 'UpdateUser', '2': '.sternx.UpdateUserRequest', '3': '.sternx.UserResponse'},
     const {'1': 'DeleteUser', '2': '.sternx.DeleteUserRequest', '3': '.sternx.DeleteUserResponse'},
@@ -117,4 +117,4 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> UserServic
 };
 
 /// Descriptor for `User`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List userServiceDescriptor = $convert.base64Decode('CgRVc2VyEj0KCkNyZWF0ZVVzZXISGS5zdGVybnguQ3JlYXRlVXNlclJlcXVlc3QaFC5zdGVybnguVXNlclJlc3BvbnNlEjsKC0dldFVzZXJCeUlkEhYuc3Rlcm54LkdldFVzZXJSZXF1ZXN0GhQuc3Rlcm54LlVzZXJSZXNwb25zZRI9CghHZXRVc2VycxIXLnN0ZXJueC5HZXRVc2Vyc1JlcXVlc3QaGC5zdGVybnguR2V0VXNlcnNSZXNwb25zZRI9CgpVcGRhdGVVc2VyEhkuc3Rlcm54LlVwZGF0ZVVzZXJSZXF1ZXN0GhQuc3Rlcm54LlVzZXJSZXNwb25zZRJDCgpEZWxldGVVc2VyEhkuc3Rlcm54LkRlbGV0ZVVzZXJSZXF1ZXN0Ghouc3Rlcm54LkRlbGV0ZVVzZXJSZXNwb25zZQ==');
+final $typed_data.Uint8List userServiceDescriptor = $convert.base64Decode('CgRVc2VyEj0KCkNyZWF0ZVVzZXISGS5zdGVybnguQ3JlYXRlVXNlclJlcXVlc3QaFC5zdGVybnguVXNlclJlc3BvbnNlEjsKC0dldFVzZXJCeUlEEhYuc3Rlcm54LkdldFVzZXJSZXF1ZXN0GhQuc3Rlcm54LlVzZXJSZXNwb25zZRI9CghHZXRVc2VycxIXLnN0ZXJueC5HZXRVc2Vyc1JlcXVlc3QaGC5zdGVybnguR2V0VXNlcnNSZXNwb25zZRI9CgpVcGRhdGVVc2VyEhkuc3Rlcm54LlVwZGF0ZVVzZXJSZXF1ZXN0GhQuc3Rlcm54LlVzZXJSZXNwb25zZRJDCgpEZWxldGVVc2VyEhkuc3Rlcm54LkRlbGV0ZVVzZXJSZXF1ZXN0Ghouc3Rlcm54LkRlbGV0ZVVzZXJSZXNwb25zZQ==');

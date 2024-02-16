@@ -7,7 +7,7 @@ http:
     - selector: sternx.User.CreateUser
       post: "/v1/users/{email}/{password}"
 
-    - selector: sternx.User.GetUserById
+    - selector: sternx.User.GetUserByID
       get: "/v1/users/{id}"
 
     - selector: sternx.User.GetUsers

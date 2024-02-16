@@ -105,8 +105,8 @@ var UserService = exports.UserService = {
     responseSerialize: serialize_sternx_UserResponse,
     responseDeserialize: deserialize_sternx_UserResponse,
   },
-  getUserById: {
-    path: '/sternx.User/GetUserById',
+  getUserByID: {
+    path: '/sternx.User/GetUserByID',
     requestStream: false,
     responseStream: false,
     requestType: user_pb.GetUserRequest,

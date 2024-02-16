@@ -19,8 +19,8 @@ class UserStub(object):
                 request_serializer=user__pb2.CreateUserRequest.SerializeToString,
                 response_deserializer=user__pb2.UserResponse.FromString,
                 )
-        self.GetUserById = channel.unary_unary(
-                '/sternx.User/GetUserById',
+        self.GetUserByID = channel.unary_unary(
+                '/sternx.User/GetUserByID',
                 request_serializer=user__pb2.GetUserRequest.SerializeToString,
                 response_deserializer=user__pb2.UserResponse.FromString,
                 )
@@ -50,7 +50,7 @@ class UserServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetUserById(self, request, context):
+    def GetUserByID(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -82,8 +82,8 @@ def add_UserServicer_to_server(servicer, server):
                     request_deserializer=user__pb2.CreateUserRequest.FromString,
                     response_serializer=user__pb2.UserResponse.SerializeToString,
             ),
-            'GetUserById': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetUserById,
+            'GetUserByID': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetUserByID,
                     request_deserializer=user__pb2.GetUserRequest.FromString,
                     response_serializer=user__pb2.UserResponse.SerializeToString,
             ),
@@ -130,7 +130,7 @@ class User(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def GetUserById(request,
+    def GetUserByID(request,
             target,
             options=(),
             channel_credentials=None,
@@ -140,7 +140,7 @@ class User(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/sternx.User/GetUserById',
+        return grpc.experimental.unary_unary(request, target, '/sternx.User/GetUserByID',
             user__pb2.GetUserRequest.SerializeToString,
             user__pb2.UserResponse.FromString,
             options, channel_credentials,

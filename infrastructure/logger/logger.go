@@ -9,7 +9,6 @@ import (
 
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
-
 	"sternx/config"
 )
 
@@ -33,7 +32,6 @@ type SubLogger struct {
 
 func getLoggersInst() *logger {
 	if globalInst == nil {
-
 		globalInst = &logger{
 			subs:   make(map[string]*SubLogger),
 			writer: zerolog.ConsoleWriter{Out: os.Stderr, TimeFormat: "15:04:05"},

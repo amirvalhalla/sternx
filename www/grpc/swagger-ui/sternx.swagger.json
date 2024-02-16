@@ -54,7 +54,7 @@
     },
     "/v1/users/{id}": {
       "get": {
-        "operationId": "User_GetUserById",
+        "operationId": "User_GetUserByID",
         "responses": {
           "200": {
             "description": "A successful response.",

@@ -458,9 +458,9 @@ class UserApi {
     var emptyResponse = UserResponse();
     return _client.invoke<UserResponse>(ctx, 'User', 'CreateUser', request, emptyResponse);
   }
-  $async.Future<UserResponse> getUserById($pb.ClientContext? ctx, GetUserRequest request) {
+  $async.Future<UserResponse> getUserByID($pb.ClientContext? ctx, GetUserRequest request) {
     var emptyResponse = UserResponse();
-    return _client.invoke<UserResponse>(ctx, 'User', 'GetUserById', request, emptyResponse);
+    return _client.invoke<UserResponse>(ctx, 'User', 'GetUserByID', request, emptyResponse);
   }
   $async.Future<GetUsersResponse> getUsers($pb.ClientContext? ctx, GetUsersRequest request) {
     var emptyResponse = GetUsersResponse();

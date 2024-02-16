@@ -6,7 +6,7 @@ option java_package = "sternx.user";
 
 service User{
   rpc CreateUser(CreateUserRequest) returns (UserResponse);
-  rpc GetUserById(GetUserRequest) returns (UserResponse);
+  rpc GetUserByID(GetUserRequest) returns (UserResponse);
   rpc GetUsers(GetUsersRequest) returns (GetUsersResponse);
   rpc UpdateUser(UpdateUserRequest) returns (UserResponse);
   rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);

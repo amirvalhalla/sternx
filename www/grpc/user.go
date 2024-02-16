@@ -23,7 +23,7 @@ func (s *userServer) CreateUser(ctx context.Context, request *sternx.CreateUserR
 	panic("implement me")
 }
 
-func (s *userServer) GetUserById(ctx context.Context, request *sternx.GetUserRequest) (*sternx.UserResponse, error) {
+func (s *userServer) GetUserByID(ctx context.Context, request *sternx.GetUserRequest) (*sternx.UserResponse, error) {
 	// TODO implement me
 	panic("implement me")
 }

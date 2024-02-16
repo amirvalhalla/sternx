@@ -4,9 +4,8 @@ import (
 	"log"
 	"time"
 
-	"sternx/infrastructure/logger"
-
 	"sternx/config"
+	"sternx/infrastructure/logger"
 	"sternx/www/grpc"
 )
 

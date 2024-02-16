@@ -165,7 +165,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateUser | [CreateUserRequest](#sternx-CreateUserRequest) | [UserResponse](#sternx-UserResponse) |  |
-| GetUserById | [GetUserRequest](#sternx-GetUserRequest) | [UserResponse](#sternx-UserResponse) |  |
+| GetUserByID | [GetUserRequest](#sternx-GetUserRequest) | [UserResponse](#sternx-UserResponse) |  |
 | GetUsers | [GetUsersRequest](#sternx-GetUsersRequest) | [GetUsersResponse](#sternx-GetUsersResponse) |  |
 | UpdateUser | [UpdateUserRequest](#sternx-UpdateUserRequest) | [UserResponse](#sternx-UserResponse) |  |
 | DeleteUser | [DeleteUserRequest](#sternx-DeleteUserRequest) | [DeleteUserResponse](#sternx-DeleteUserResponse) |  |

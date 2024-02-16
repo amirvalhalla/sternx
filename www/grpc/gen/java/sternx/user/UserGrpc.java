@@ -47,34 +47,34 @@ public final class UserGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<sternx.user.UserOuterClass.GetUserRequest,
-      sternx.user.UserOuterClass.UserResponse> getGetUserByIdMethod;
+      sternx.user.UserOuterClass.UserResponse> getGetUserByIDMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetUserById",
+      fullMethodName = SERVICE_NAME + '/' + "GetUserByID",
       requestType = sternx.user.UserOuterClass.GetUserRequest.class,
       responseType = sternx.user.UserOuterClass.UserResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<sternx.user.UserOuterClass.GetUserRequest,
-      sternx.user.UserOuterClass.UserResponse> getGetUserByIdMethod() {
-    io.grpc.MethodDescriptor<sternx.user.UserOuterClass.GetUserRequest, sternx.user.UserOuterClass.UserResponse> getGetUserByIdMethod;
-    if ((getGetUserByIdMethod = UserGrpc.getGetUserByIdMethod) == null) {
+      sternx.user.UserOuterClass.UserResponse> getGetUserByIDMethod() {
+    io.grpc.MethodDescriptor<sternx.user.UserOuterClass.GetUserRequest, sternx.user.UserOuterClass.UserResponse> getGetUserByIDMethod;
+    if ((getGetUserByIDMethod = UserGrpc.getGetUserByIDMethod) == null) {
       synchronized (UserGrpc.class) {
-        if ((getGetUserByIdMethod = UserGrpc.getGetUserByIdMethod) == null) {
-          UserGrpc.getGetUserByIdMethod = getGetUserByIdMethod =
+        if ((getGetUserByIDMethod = UserGrpc.getGetUserByIDMethod) == null) {
+          UserGrpc.getGetUserByIDMethod = getGetUserByIDMethod =
               io.grpc.MethodDescriptor.<sternx.user.UserOuterClass.GetUserRequest, sternx.user.UserOuterClass.UserResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetUserById"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetUserByID"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   sternx.user.UserOuterClass.GetUserRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   sternx.user.UserOuterClass.UserResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new UserMethodDescriptorSupplier("GetUserById"))
+              .setSchemaDescriptor(new UserMethodDescriptorSupplier("GetUserByID"))
               .build();
         }
       }
     }
-    return getGetUserByIdMethod;
+    return getGetUserByIDMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<sternx.user.UserOuterClass.GetUsersRequest,
@@ -227,9 +227,9 @@ public final class UserGrpc {
 
     /**
      */
-    public void getUserById(sternx.user.UserOuterClass.GetUserRequest request,
+    public void getUserByID(sternx.user.UserOuterClass.GetUserRequest request,
         io.grpc.stub.StreamObserver<sternx.user.UserOuterClass.UserResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetUserByIdMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetUserByIDMethod(), responseObserver);
     }
 
     /**
@@ -263,7 +263,7 @@ public final class UserGrpc {
                 sternx.user.UserOuterClass.UserResponse>(
                   this, METHODID_CREATE_USER)))
           .addMethod(
-            getGetUserByIdMethod(),
+            getGetUserByIDMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 sternx.user.UserOuterClass.GetUserRequest,
@@ -318,10 +318,10 @@ public final class UserGrpc {
 
     /**
      */
-    public void getUserById(sternx.user.UserOuterClass.GetUserRequest request,
+    public void getUserByID(sternx.user.UserOuterClass.GetUserRequest request,
         io.grpc.stub.StreamObserver<sternx.user.UserOuterClass.UserResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetUserByIdMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetUserByIDMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -372,9 +372,9 @@ public final class UserGrpc {
 
     /**
      */
-    public sternx.user.UserOuterClass.UserResponse getUserById(sternx.user.UserOuterClass.GetUserRequest request) {
+    public sternx.user.UserOuterClass.UserResponse getUserByID(sternx.user.UserOuterClass.GetUserRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetUserByIdMethod(), getCallOptions(), request);
+          getChannel(), getGetUserByIDMethod(), getCallOptions(), request);
     }
 
     /**
@@ -423,10 +423,10 @@ public final class UserGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<sternx.user.UserOuterClass.UserResponse> getUserById(
+    public com.google.common.util.concurrent.ListenableFuture<sternx.user.UserOuterClass.UserResponse> getUserByID(
         sternx.user.UserOuterClass.GetUserRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetUserByIdMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetUserByIDMethod(), getCallOptions()), request);
     }
 
     /**
@@ -482,7 +482,7 @@ public final class UserGrpc {
               (io.grpc.stub.StreamObserver<sternx.user.UserOuterClass.UserResponse>) responseObserver);
           break;
         case METHODID_GET_USER_BY_ID:
-          serviceImpl.getUserById((sternx.user.UserOuterClass.GetUserRequest) request,
+          serviceImpl.getUserByID((sternx.user.UserOuterClass.GetUserRequest) request,
               (io.grpc.stub.StreamObserver<sternx.user.UserOuterClass.UserResponse>) responseObserver);
           break;
         case METHODID_GET_USERS:
@@ -559,7 +559,7 @@ public final class UserGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new UserFileDescriptorSupplier())
               .addMethod(getCreateUserMethod())
-              .addMethod(getGetUserByIdMethod())
+              .addMethod(getGetUserByIDMethod())
               .addMethod(getGetUsersMethod())
               .addMethod(getUpdateUserMethod())
               .addMethod(getDeleteUserMethod())

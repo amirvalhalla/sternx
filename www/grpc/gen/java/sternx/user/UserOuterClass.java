@@ -5282,7 +5282,7 @@ public final class UserOuterClass {
       "(\tR\002id\"$\n\022DeleteUserResponse\022\016\n\002id\030\001 \001(\t" +
       "R\002id2\305\002\n\004User\022=\n\nCreateUser\022\031.sternx.Cre" +
       "ateUserRequest\032\024.sternx.UserResponse\022;\n\013" +
-      "GetUserById\022\026.sternx.GetUserRequest\032\024.st" +
+      "GetUserByID\022\026.sternx.GetUserRequest\032\024.st" +
       "ernx.UserResponse\022=\n\010GetUsers\022\027.sternx.G" +
       "etUsersRequest\032\030.sternx.GetUsersResponse" +
       "\022=\n\nUpdateUser\022\031.sternx.UpdateUserReques" +
