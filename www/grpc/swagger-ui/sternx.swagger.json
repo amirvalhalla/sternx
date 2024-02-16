@@ -218,12 +218,7 @@
       }
     },
     "sternxDeleteUserResponse": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        }
-      }
+      "type": "object"
     },
     "sternxGetUsersResponse": {
       "type": "object",
@@ -233,6 +228,18 @@
           "items": {
             "$ref": "#/definitions/sternxUserResponse"
           }
+        },
+        "pageIndex": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "totalRecords": {
+          "type": "string",
+          "format": "uint64"
         }
       }
     },

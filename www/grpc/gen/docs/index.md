@@ -63,11 +63,6 @@
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-
-
 
 
 
@@ -112,6 +107,9 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | users | [UserResponse](#sternx-UserResponse) | repeated |  |
+| page_index | [uint32](#uint32) |  |  |
+| page_size | [uint32](#uint32) |  |  |
+| total_records | [uint64](#uint64) |  |  |
 
 
 

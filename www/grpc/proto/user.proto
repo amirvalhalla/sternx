@@ -33,6 +33,9 @@ message GetUsersRequest {
 
 message GetUsersResponse {
   repeated UserResponse users = 1;
+  uint32 page_index = 2;
+  uint32 page_size = 3;
+  uint64 total_records = 4;
 }
 
 message UpdateUserRequest {
@@ -45,6 +48,4 @@ message DeleteUserRequest {
   string id = 1;
 }
 
-message DeleteUserResponse {
-  string id = 1;
-}
+message DeleteUserResponse {}

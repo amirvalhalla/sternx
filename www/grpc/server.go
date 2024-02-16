@@ -1,14 +1,13 @@
 package grpc
 
-//nolint:all
 import (
 	"context"
 	"net"
 
-	"sternx/infrastructure/logger"
-
 	"google.golang.org/grpc"
 	"sternx/config"
+	"sternx/infrastructure/logger"
+	"sternx/infrastructure/repository"
 	sternx "sternx/www/grpc/gen/go"
 )
 
@@ -19,16 +18,18 @@ type Server struct {
 	address  string
 	grpc     *grpc.Server
 	config   *config.Config
+	uow      repository.UnitOfWork
 	logger   *logger.SubLogger
 }
 
-func NewServer(cfg *config.Config) *Server {
+func NewServer(cfg *config.Config, uow repository.UnitOfWork) *Server {
 	ctx, cancel := context.WithCancel(context.Background())
 
 	return &Server{
 		ctx:    ctx,
 		cancel: cancel,
 		config: cfg,
+		uow:    uow,
 		logger: logger.NewSubLogger("_grpc", nil),
 	}
 }
@@ -45,7 +46,7 @@ func (s *Server) StartServer() error {
 func (s *Server) startListening(listener net.Listener) error {
 	grpcServer := grpc.NewServer()
 
-	userGRPCServer := newUserServer(s)
+	userGRPCServer := newUserServer(s, s.uow, s.config)
 
 	sternx.RegisterUserServer(grpcServer, userGRPCServer)
 

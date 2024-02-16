@@ -847,7 +847,10 @@ proto.sternx.GetUsersResponse.prototype.toObject = function(opt_includeInstance)
 proto.sternx.GetUsersResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     usersList: jspb.Message.toObjectList(msg.getUsersList(),
-    proto.sternx.UserResponse.toObject, includeInstance)
+    proto.sternx.UserResponse.toObject, includeInstance),
+    pageIndex: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    totalRecords: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -889,6 +892,18 @@ proto.sternx.GetUsersResponse.deserializeBinaryFromReader = function(msg, reader
       reader.readMessage(value,proto.sternx.UserResponse.deserializeBinaryFromReader);
       msg.addUsers(value);
       break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setPageIndex(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setPageSize(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setTotalRecords(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -924,6 +939,27 @@ proto.sternx.GetUsersResponse.serializeBinaryToWriter = function(message, writer
       1,
       f,
       proto.sternx.UserResponse.serializeBinaryToWriter
+    );
+  }
+  f = message.getPageIndex();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = message.getPageSize();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+  f = message.getTotalRecords();
+  if (f !== 0) {
+    writer.writeUint64(
+      4,
+      f
     );
   }
 };
@@ -964,6 +1000,60 @@ proto.sternx.GetUsersResponse.prototype.addUsers = function(opt_value, opt_index
  */
 proto.sternx.GetUsersResponse.prototype.clearUsersList = function() {
   return this.setUsersList([]);
+};
+
+
+/**
+ * optional uint32 page_index = 2;
+ * @return {number}
+ */
+proto.sternx.GetUsersResponse.prototype.getPageIndex = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sternx.GetUsersResponse} returns this
+ */
+proto.sternx.GetUsersResponse.prototype.setPageIndex = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 page_size = 3;
+ * @return {number}
+ */
+proto.sternx.GetUsersResponse.prototype.getPageSize = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sternx.GetUsersResponse} returns this
+ */
+proto.sternx.GetUsersResponse.prototype.setPageSize = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional uint64 total_records = 4;
+ * @return {number}
+ */
+proto.sternx.GetUsersResponse.prototype.getTotalRecords = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sternx.GetUsersResponse} returns this
+ */
+proto.sternx.GetUsersResponse.prototype.setTotalRecords = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
@@ -1319,7 +1409,7 @@ proto.sternx.DeleteUserResponse.prototype.toObject = function(opt_includeInstanc
  */
 proto.sternx.DeleteUserResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, "")
+
   };
 
   if (includeInstance) {
@@ -1356,10 +1446,6 @@ proto.sternx.DeleteUserResponse.deserializeBinaryFromReader = function(msg, read
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setId(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -1389,31 +1475,6 @@ proto.sternx.DeleteUserResponse.prototype.serializeBinary = function() {
  */
 proto.sternx.DeleteUserResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getId();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * optional string id = 1;
- * @return {string}
- */
-proto.sternx.DeleteUserResponse.prototype.getId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.sternx.DeleteUserResponse} returns this
- */
-proto.sternx.DeleteUserResponse.prototype.setId = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

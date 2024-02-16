@@ -2526,6 +2526,24 @@ public final class UserOuterClass {
      */
     sternx.user.UserOuterClass.UserResponseOrBuilder getUsersOrBuilder(
         int index);
+
+    /**
+     * <code>uint32 page_index = 2 [json_name = "pageIndex"];</code>
+     * @return The pageIndex.
+     */
+    int getPageIndex();
+
+    /**
+     * <code>uint32 page_size = 3 [json_name = "pageSize"];</code>
+     * @return The pageSize.
+     */
+    int getPageSize();
+
+    /**
+     * <code>uint64 total_records = 4 [json_name = "totalRecords"];</code>
+     * @return The totalRecords.
+     */
+    long getTotalRecords();
   }
   /**
    * Protobuf type {@code sternx.GetUsersResponse}
@@ -2608,6 +2626,39 @@ public final class UserOuterClass {
       return users_.get(index);
     }
 
+    public static final int PAGE_INDEX_FIELD_NUMBER = 2;
+    private int pageIndex_;
+    /**
+     * <code>uint32 page_index = 2 [json_name = "pageIndex"];</code>
+     * @return The pageIndex.
+     */
+    @java.lang.Override
+    public int getPageIndex() {
+      return pageIndex_;
+    }
+
+    public static final int PAGE_SIZE_FIELD_NUMBER = 3;
+    private int pageSize_;
+    /**
+     * <code>uint32 page_size = 3 [json_name = "pageSize"];</code>
+     * @return The pageSize.
+     */
+    @java.lang.Override
+    public int getPageSize() {
+      return pageSize_;
+    }
+
+    public static final int TOTAL_RECORDS_FIELD_NUMBER = 4;
+    private long totalRecords_;
+    /**
+     * <code>uint64 total_records = 4 [json_name = "totalRecords"];</code>
+     * @return The totalRecords.
+     */
+    @java.lang.Override
+    public long getTotalRecords() {
+      return totalRecords_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2625,6 +2676,15 @@ public final class UserOuterClass {
       for (int i = 0; i < users_.size(); i++) {
         output.writeMessage(1, users_.get(i));
       }
+      if (pageIndex_ != 0) {
+        output.writeUInt32(2, pageIndex_);
+      }
+      if (pageSize_ != 0) {
+        output.writeUInt32(3, pageSize_);
+      }
+      if (totalRecords_ != 0L) {
+        output.writeUInt64(4, totalRecords_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2637,6 +2697,18 @@ public final class UserOuterClass {
       for (int i = 0; i < users_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, users_.get(i));
+      }
+      if (pageIndex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, pageIndex_);
+      }
+      if (pageSize_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, pageSize_);
+      }
+      if (totalRecords_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(4, totalRecords_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -2655,6 +2727,12 @@ public final class UserOuterClass {
 
       if (!getUsersList()
           .equals(other.getUsersList())) return false;
+      if (getPageIndex()
+          != other.getPageIndex()) return false;
+      if (getPageSize()
+          != other.getPageSize()) return false;
+      if (getTotalRecords()
+          != other.getTotalRecords()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2670,6 +2748,13 @@ public final class UserOuterClass {
         hash = (37 * hash) + USERS_FIELD_NUMBER;
         hash = (53 * hash) + getUsersList().hashCode();
       }
+      hash = (37 * hash) + PAGE_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getPageIndex();
+      hash = (37 * hash) + PAGE_SIZE_FIELD_NUMBER;
+      hash = (53 * hash) + getPageSize();
+      hash = (37 * hash) + TOTAL_RECORDS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTotalRecords());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2805,6 +2890,12 @@ public final class UserOuterClass {
           usersBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
+        pageIndex_ = 0;
+
+        pageSize_ = 0;
+
+        totalRecords_ = 0L;
+
         return this;
       }
 
@@ -2841,6 +2932,9 @@ public final class UserOuterClass {
         } else {
           result.users_ = usersBuilder_.build();
         }
+        result.pageIndex_ = pageIndex_;
+        result.pageSize_ = pageSize_;
+        result.totalRecords_ = totalRecords_;
         onBuilt();
         return result;
       }
@@ -2915,6 +3009,15 @@ public final class UserOuterClass {
             }
           }
         }
+        if (other.getPageIndex() != 0) {
+          setPageIndex(other.getPageIndex());
+        }
+        if (other.getPageSize() != 0) {
+          setPageSize(other.getPageSize());
+        }
+        if (other.getTotalRecords() != 0L) {
+          setTotalRecords(other.getTotalRecords());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -2954,6 +3057,21 @@ public final class UserOuterClass {
                 }
                 break;
               } // case 10
+              case 16: {
+                pageIndex_ = input.readUInt32();
+
+                break;
+              } // case 16
+              case 24: {
+                pageSize_ = input.readUInt32();
+
+                break;
+              } // case 24
+              case 32: {
+                totalRecords_ = input.readUInt64();
+
+                break;
+              } // case 32
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3209,6 +3327,99 @@ public final class UserOuterClass {
           users_ = null;
         }
         return usersBuilder_;
+      }
+
+      private int pageIndex_ ;
+      /**
+       * <code>uint32 page_index = 2 [json_name = "pageIndex"];</code>
+       * @return The pageIndex.
+       */
+      @java.lang.Override
+      public int getPageIndex() {
+        return pageIndex_;
+      }
+      /**
+       * <code>uint32 page_index = 2 [json_name = "pageIndex"];</code>
+       * @param value The pageIndex to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPageIndex(int value) {
+        
+        pageIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 page_index = 2 [json_name = "pageIndex"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPageIndex() {
+        
+        pageIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int pageSize_ ;
+      /**
+       * <code>uint32 page_size = 3 [json_name = "pageSize"];</code>
+       * @return The pageSize.
+       */
+      @java.lang.Override
+      public int getPageSize() {
+        return pageSize_;
+      }
+      /**
+       * <code>uint32 page_size = 3 [json_name = "pageSize"];</code>
+       * @param value The pageSize to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPageSize(int value) {
+        
+        pageSize_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 page_size = 3 [json_name = "pageSize"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPageSize() {
+        
+        pageSize_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long totalRecords_ ;
+      /**
+       * <code>uint64 total_records = 4 [json_name = "totalRecords"];</code>
+       * @return The totalRecords.
+       */
+      @java.lang.Override
+      public long getTotalRecords() {
+        return totalRecords_;
+      }
+      /**
+       * <code>uint64 total_records = 4 [json_name = "totalRecords"];</code>
+       * @param value The totalRecords to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTotalRecords(long value) {
+        
+        totalRecords_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 total_records = 4 [json_name = "totalRecords"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTotalRecords() {
+        
+        totalRecords_ = 0L;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -4673,18 +4884,6 @@ public final class UserOuterClass {
   public interface DeleteUserResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:sternx.DeleteUserResponse)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string id = 1 [json_name = "id"];</code>
-     * @return The id.
-     */
-    java.lang.String getId();
-    /**
-     * <code>string id = 1 [json_name = "id"];</code>
-     * @return The bytes for id.
-     */
-    com.google.protobuf.ByteString
-        getIdBytes();
   }
   /**
    * Protobuf type {@code sternx.DeleteUserResponse}
@@ -4699,7 +4898,6 @@ public final class UserOuterClass {
       super(builder);
     }
     private DeleteUserResponse() {
-      id_ = "";
     }
 
     @java.lang.Override
@@ -4727,44 +4925,6 @@ public final class UserOuterClass {
               sternx.user.UserOuterClass.DeleteUserResponse.class, sternx.user.UserOuterClass.DeleteUserResponse.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
-    /**
-     * <code>string id = 1 [json_name = "id"];</code>
-     * @return The id.
-     */
-    @java.lang.Override
-    public java.lang.String getId() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        id_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string id = 1 [json_name = "id"];</code>
-     * @return The bytes for id.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getIdBytes() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        id_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -4779,9 +4939,6 @@ public final class UserOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -4791,9 +4948,6 @@ public final class UserOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
-      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -4809,8 +4963,6 @@ public final class UserOuterClass {
       }
       sternx.user.UserOuterClass.DeleteUserResponse other = (sternx.user.UserOuterClass.DeleteUserResponse) obj;
 
-      if (!getId()
-          .equals(other.getId())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -4822,8 +4974,6 @@ public final class UserOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4952,8 +5102,6 @@ public final class UserOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = "";
-
         return this;
       }
 
@@ -4980,7 +5128,6 @@ public final class UserOuterClass {
       @java.lang.Override
       public sternx.user.UserOuterClass.DeleteUserResponse buildPartial() {
         sternx.user.UserOuterClass.DeleteUserResponse result = new sternx.user.UserOuterClass.DeleteUserResponse(this);
-        result.id_ = id_;
         onBuilt();
         return result;
       }
@@ -5029,10 +5176,6 @@ public final class UserOuterClass {
 
       public Builder mergeFrom(sternx.user.UserOuterClass.DeleteUserResponse other) {
         if (other == sternx.user.UserOuterClass.DeleteUserResponse.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
-          id_ = other.id_;
-          onChanged();
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -5059,11 +5202,6 @@ public final class UserOuterClass {
               case 0:
                 done = true;
                 break;
-              case 10: {
-                id_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 10
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -5077,82 +5215,6 @@ public final class UserOuterClass {
         } finally {
           onChanged();
         } // finally
-        return this;
-      }
-
-      private java.lang.Object id_ = "";
-      /**
-       * <code>string id = 1 [json_name = "id"];</code>
-       * @return The id.
-       */
-      public java.lang.String getId() {
-        java.lang.Object ref = id_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          id_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string id = 1 [json_name = "id"];</code>
-       * @return The bytes for id.
-       */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
-        java.lang.Object ref = id_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          id_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string id = 1 [json_name = "id"];</code>
-       * @param value The id to set.
-       * @return This builder for chaining.
-       */
-      public Builder setId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string id = 1 [json_name = "id"];</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearId() {
-        
-        id_ = getDefaultInstance().getId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string id = 1 [json_name = "id"];</code>
-       * @param value The bytes for id to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        id_ = value;
-        onChanged();
         return this;
       }
       @java.lang.Override
@@ -5274,22 +5336,24 @@ public final class UserOuterClass {
       "\tR\002id\"4\n\014UserResponse\022\016\n\002id\030\001 \001(\tR\002id\022\024\n" +
       "\005email\030\002 \001(\tR\005email\"M\n\017GetUsersRequest\022\035" +
       "\n\npage_index\030\001 \001(\rR\tpageIndex\022\033\n\tpage_si" +
-      "ze\030\002 \001(\rR\010pageSize\">\n\020GetUsersResponse\022*" +
-      "\n\005users\030\001 \003(\0132\024.sternx.UserResponseR\005use" +
-      "rs\"U\n\021UpdateUserRequest\022\016\n\002id\030\001 \001(\tR\002id\022" +
-      "\024\n\005email\030\002 \001(\tR\005email\022\032\n\010password\030\003 \001(\tR" +
-      "\010password\"#\n\021DeleteUserRequest\022\016\n\002id\030\001 \001" +
-      "(\tR\002id\"$\n\022DeleteUserResponse\022\016\n\002id\030\001 \001(\t" +
-      "R\002id2\305\002\n\004User\022=\n\nCreateUser\022\031.sternx.Cre" +
-      "ateUserRequest\032\024.sternx.UserResponse\022;\n\013" +
-      "GetUserByID\022\026.sternx.GetUserRequest\032\024.st" +
-      "ernx.UserResponse\022=\n\010GetUsers\022\027.sternx.G" +
-      "etUsersRequest\032\030.sternx.GetUsersResponse" +
-      "\022=\n\nUpdateUser\022\031.sternx.UpdateUserReques" +
-      "t\032\024.sternx.UserResponse\022C\n\nDeleteUser\022\031." +
-      "sternx.DeleteUserRequest\032\032.sternx.Delete" +
-      "UserResponseB%\n\013sternx.userZ\026sternx/www/" +
-      "grpc/sternxb\006proto3"
+      "ze\030\002 \001(\rR\010pageSize\"\237\001\n\020GetUsersResponse\022" +
+      "*\n\005users\030\001 \003(\0132\024.sternx.UserResponseR\005us" +
+      "ers\022\035\n\npage_index\030\002 \001(\rR\tpageIndex\022\033\n\tpa" +
+      "ge_size\030\003 \001(\rR\010pageSize\022#\n\rtotal_records" +
+      "\030\004 \001(\004R\014totalRecords\"U\n\021UpdateUserReques" +
+      "t\022\016\n\002id\030\001 \001(\tR\002id\022\024\n\005email\030\002 \001(\tR\005email\022" +
+      "\032\n\010password\030\003 \001(\tR\010password\"#\n\021DeleteUse" +
+      "rRequest\022\016\n\002id\030\001 \001(\tR\002id\"\024\n\022DeleteUserRe" +
+      "sponse2\305\002\n\004User\022=\n\nCreateUser\022\031.sternx.C" +
+      "reateUserRequest\032\024.sternx.UserResponse\022;" +
+      "\n\013GetUserByID\022\026.sternx.GetUserRequest\032\024." +
+      "sternx.UserResponse\022=\n\010GetUsers\022\027.sternx" +
+      ".GetUsersRequest\032\030.sternx.GetUsersRespon" +
+      "se\022=\n\nUpdateUser\022\031.sternx.UpdateUserRequ" +
+      "est\032\024.sternx.UserResponse\022C\n\nDeleteUser\022" +
+      "\031.sternx.DeleteUserRequest\032\032.sternx.Dele" +
+      "teUserResponseB%\n\013sternx.userZ\026sternx/ww" +
+      "w/grpc/sternxb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -5324,7 +5388,7 @@ public final class UserOuterClass {
     internal_static_sternx_GetUsersResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sternx_GetUsersResponse_descriptor,
-        new java.lang.String[] { "Users", });
+        new java.lang.String[] { "Users", "PageIndex", "PageSize", "TotalRecords", });
     internal_static_sternx_UpdateUserRequest_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_sternx_UpdateUserRequest_fieldAccessorTable = new
@@ -5342,7 +5406,7 @@ public final class UserOuterClass {
     internal_static_sternx_DeleteUserResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sternx_DeleteUserResponse_descriptor,
-        new java.lang.String[] { "Id", });
+        new java.lang.String[] { });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

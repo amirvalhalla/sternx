@@ -56,11 +56,14 @@ const GetUsersResponse$json = const {
   '1': 'GetUsersResponse',
   '2': const [
     const {'1': 'users', '3': 1, '4': 3, '5': 11, '6': '.sternx.UserResponse', '10': 'users'},
+    const {'1': 'page_index', '3': 2, '4': 1, '5': 13, '10': 'pageIndex'},
+    const {'1': 'page_size', '3': 3, '4': 1, '5': 13, '10': 'pageSize'},
+    const {'1': 'total_records', '3': 4, '4': 1, '5': 4, '10': 'totalRecords'},
   ],
 };
 
 /// Descriptor for `GetUsersResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getUsersResponseDescriptor = $convert.base64Decode('ChBHZXRVc2Vyc1Jlc3BvbnNlEioKBXVzZXJzGAEgAygLMhQuc3Rlcm54LlVzZXJSZXNwb25zZVIFdXNlcnM=');
+final $typed_data.Uint8List getUsersResponseDescriptor = $convert.base64Decode('ChBHZXRVc2Vyc1Jlc3BvbnNlEioKBXVzZXJzGAEgAygLMhQuc3Rlcm54LlVzZXJSZXNwb25zZVIFdXNlcnMSHQoKcGFnZV9pbmRleBgCIAEoDVIJcGFnZUluZGV4EhsKCXBhZ2Vfc2l6ZRgDIAEoDVIIcGFnZVNpemUSIwoNdG90YWxfcmVjb3JkcxgEIAEoBFIMdG90YWxSZWNvcmRz');
 @$core.Deprecated('Use updateUserRequestDescriptor instead')
 const UpdateUserRequest$json = const {
   '1': 'UpdateUserRequest',
@@ -86,13 +89,10 @@ final $typed_data.Uint8List deleteUserRequestDescriptor = $convert.base64Decode(
 @$core.Deprecated('Use deleteUserResponseDescriptor instead')
 const DeleteUserResponse$json = const {
   '1': 'DeleteUserResponse',
-  '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-  ],
 };
 
 /// Descriptor for `DeleteUserResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List deleteUserResponseDescriptor = $convert.base64Decode('ChJEZWxldGVVc2VyUmVzcG9uc2USDgoCaWQYASABKAlSAmlk');
+final $typed_data.Uint8List deleteUserResponseDescriptor = $convert.base64Decode('ChJEZWxldGVVc2VyUmVzcG9uc2U=');
 const $core.Map<$core.String, $core.dynamic> UserServiceBase$json = const {
   '1': 'User',
   '2': const [

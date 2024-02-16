@@ -8,6 +8,7 @@
 import 'dart:async' as $async;
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class CreateUserRequest extends $pb.GeneratedMessage {
@@ -243,16 +244,31 @@ class GetUsersRequest extends $pb.GeneratedMessage {
 class GetUsersResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetUsersResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sternx'), createEmptyInstance: create)
     ..pc<UserResponse>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'users', $pb.PbFieldType.PM, subBuilder: UserResponse.create)
+    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pageIndex', $pb.PbFieldType.OU3)
+    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pageSize', $pb.PbFieldType.OU3)
+    ..a<$fixnum.Int64>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalRecords', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false
   ;
 
   GetUsersResponse._() : super();
   factory GetUsersResponse({
     $core.Iterable<UserResponse>? users,
+    $core.int? pageIndex,
+    $core.int? pageSize,
+    $fixnum.Int64? totalRecords,
   }) {
     final _result = create();
     if (users != null) {
       _result.users.addAll(users);
+    }
+    if (pageIndex != null) {
+      _result.pageIndex = pageIndex;
+    }
+    if (pageSize != null) {
+      _result.pageSize = pageSize;
+    }
+    if (totalRecords != null) {
+      _result.totalRecords = totalRecords;
     }
     return _result;
   }
@@ -279,6 +295,33 @@ class GetUsersResponse extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $core.List<UserResponse> get users => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.int get pageIndex => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set pageIndex($core.int v) { $_setUnsignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPageIndex() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPageIndex() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get pageSize => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set pageSize($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPageSize() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPageSize() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get totalRecords => $_getI64(3);
+  @$pb.TagNumber(4)
+  set totalRecords($fixnum.Int64 v) { $_setInt64(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasTotalRecords() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTotalRecords() => clearField(4);
 }
 
 class UpdateUserRequest extends $pb.GeneratedMessage {
@@ -405,20 +448,11 @@ class DeleteUserRequest extends $pb.GeneratedMessage {
 
 class DeleteUserResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeleteUserResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sternx'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
     ..hasRequiredFields = false
   ;
 
   DeleteUserResponse._() : super();
-  factory DeleteUserResponse({
-    $core.String? id,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    return _result;
-  }
+  factory DeleteUserResponse() => create();
   factory DeleteUserResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DeleteUserResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
@@ -439,15 +473,6 @@ class DeleteUserResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static DeleteUserResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DeleteUserResponse>(create);
   static DeleteUserResponse? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
 }
 
 class UserApi {
