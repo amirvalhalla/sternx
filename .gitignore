@@ -1,0 +1,14 @@
+build/
+.idea
+.DS_Store
+.vscode
+todo
+*.local.*
+dist/
+.releaser.yml
+strenx-*
+
+# vim artifacts
+.swp
+.*.sw*
+

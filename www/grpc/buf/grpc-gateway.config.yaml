@@ -1,0 +1,20 @@
+type: google.api.Service
+config_version: 3
+
+http:
+  rules:
+    # Users APIs
+    - selector: sternx.User.CreateUser
+      post: "/v1/users"
+
+    - selector: sternx.User.GetUserById
+      get: "/v1/users/{id}"
+
+    - selector: sternx.User.GetUsers
+      get: "/v1/users"
+
+    - selector: sternx.User.UpdateUser
+      put: "/v1/users"
+
+    - selector: sternx.User.DeleteUser
+      delete: "/v1/users/{id}"

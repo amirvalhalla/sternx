@@ -1,0 +1,50 @@
+syntax = 'proto3';
+package sternx;
+
+option go_package = "sternx/www/grpc/sternx";
+option java_package = "sternx.user";
+
+service User{
+  rpc CreateUser(CreateUserRequest) returns (UserResponse);
+  rpc GetUserById(GetUserRequest) returns (UserResponse);
+  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse);
+  rpc UpdateUser(UpdateUserRequest) returns (UserResponse);
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+ }
+
+message CreateUserRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message UserResponse {
+  string id = 1;
+  string email = 2;
+}
+
+message GetUsersRequest {
+  uint32 page_index = 1;
+  uint32 page_size = 2;
+}
+
+message GetUsersResponse {
+  repeated UserResponse users = 1;
+}
+
+message UpdateUserRequest {
+  string id = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message DeleteUserRequest {
+  string id = 1;
+}
+
+message DeleteUserResponse {
+  string id = 1;
+}
