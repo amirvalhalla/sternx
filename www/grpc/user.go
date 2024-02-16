@@ -5,15 +5,13 @@ import (
 	"errors"
 
 	"github.com/google/uuid"
-	"sternx/infrastructure/query"
-
+	"golang.org/x/crypto/scrypt"
 	"sternx/config"
 	"sternx/domain"
 	"sternx/infrastructure/logger"
-	"sternx/infrastructure/util"
-
-	"golang.org/x/crypto/scrypt"
+	"sternx/infrastructure/query"
 	"sternx/infrastructure/repository"
+	"sternx/infrastructure/util"
 	sternx "sternx/www/grpc/gen/go"
 )
 
@@ -104,10 +102,6 @@ func (s *userServer) GetUserByID(ctx context.Context, request *sternx.GetUserReq
 }
 
 func (s *userServer) GetUsers(ctx context.Context, request *sternx.GetUsersRequest) (*sternx.GetUsersResponse, error) {
-	if request.PageIndex < 0 || request.PageSize < 0 {
-		return nil, errors.New("page index or page size could not be less than 0")
-	}
-
 	var userEntities []domain.User
 	var totalRecords int64
 	var err error
@@ -185,6 +179,7 @@ func (s *userServer) UpdateUser(ctx context.Context, request *sternx.UpdateUserR
 		result, err := uows.UserRepository().Update(&findUser)
 		if err != nil {
 			_ = uows.Rollback()
+
 			return err
 		}
 
@@ -192,7 +187,6 @@ func (s *userServer) UpdateUser(ctx context.Context, request *sternx.UpdateUserR
 
 		return uows.Commit()
 	})
-
 	if err != nil {
 		return nil, err
 	}
@@ -224,12 +218,12 @@ func (s *userServer) DeleteUser(ctx context.Context, request *sternx.DeleteUserR
 		err = uows.UserRepository().SoftDelete(&findUser)
 		if err != nil {
 			_ = uows.Rollback()
+
 			return err
 		}
 
 		return uows.Commit()
 	})
-
 	if err != nil {
 		return nil, err
 	}

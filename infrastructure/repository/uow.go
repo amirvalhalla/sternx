@@ -66,6 +66,7 @@ func (uow *unitOfWork) Setup(connString string) error {
 		},
 	); err != nil {
 		uow.logger.Error("could not setup database connection", "error", err.Error())
+
 		return ErrSetupUnitOfWork
 	}
 
@@ -74,10 +75,12 @@ func (uow *unitOfWork) Setup(connString string) error {
 	err = uow.autoMigrate()
 	if err != nil {
 		uow.logger.Error("could not migrate tables", "error", err.Error())
+
 		return err
 	}
 
 	uow.logger.Info("tables has been migrated successfully")
+
 	return nil
 }
 
