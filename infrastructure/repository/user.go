@@ -3,6 +3,7 @@ package repository
 import (
 	"gorm.io/gorm"
 	"sternx/domain"
+	"sternx/infrastructure/logger"
 )
 
 type User interface {
@@ -10,5 +11,8 @@ type User interface {
 }
 
 func NewUser(tx *gorm.DB) User {
-	return NewBaseRepository[domain.User](tx)
+	return NewBaseRepository[domain.User](
+		tx,
+		logger.NewSubLogger("_user repository", nil),
+	)
 }

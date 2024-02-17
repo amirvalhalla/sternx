@@ -4,6 +4,7 @@ import (
 	"errors"
 
 	"gorm.io/gorm"
+	"sternx/infrastructure/logger"
 )
 
 var (
@@ -32,12 +33,14 @@ type BaseRepository[T any] interface {
 }
 
 type baseRepository[T any] struct {
-	tx *gorm.DB
+	tx     *gorm.DB
+	logger *logger.SubLogger
 }
 
-func NewBaseRepository[T any](tx *gorm.DB) BaseRepository[T] {
+func NewBaseRepository[T any](tx *gorm.DB, lg *logger.SubLogger) BaseRepository[T] {
 	return &baseRepository[T]{
-		tx: tx,
+		tx:     tx,
+		logger: lg,
 	}
 }
 
@@ -50,8 +53,12 @@ func (b baseRepository[T]) FindOne(sc ...SelectQuery) (T, error) {
 
 	if err := b.tx.First(&row).Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
+			b.logger.Info("could not find the record", "error", err.Error())
+
 			return row, ErrRecordNotFound
 		}
+
+		b.logger.Error("could not find the record", "error", err.Error())
 
 		return row, ErrFindOne
 	}
@@ -68,8 +75,11 @@ func (b baseRepository[T]) FindAll(sc ...SelectQuery) ([]T, error) {
 
 	if err := b.tx.Find(&rows).Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
+			b.logger.Info("could not find the record", "error", err.Error())
+
 			return nil, ErrRecordNotFound
 		}
+		b.logger.Error("could not find the record", "error", err.Error())
 
 		return nil, ErrFindAll
 	}
@@ -90,8 +100,11 @@ func (b baseRepository[T]) FindAllWithTotalRecords(countQuery SelectQuery, sc ..
 
 	if err := b.tx.Find(&rows).Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
+			b.logger.Info("could not find the record", "error", err.Error())
+
 			return nil, 0, ErrRecordNotFound
 		}
+		b.logger.Error("could not find the record", "error", err.Error())
 
 		return nil, 0, ErrFindAll
 	}
@@ -101,6 +114,8 @@ func (b baseRepository[T]) FindAllWithTotalRecords(countQuery SelectQuery, sc ..
 
 func (b baseRepository[T]) Insert(model *T) (*T, error) {
 	if err := b.tx.Create(model).Error; err != nil {
+		b.logger.Error("could not insert into database", "error", err.Error())
+
 		return nil, ErrCouldNotInsert
 	}
 
@@ -109,6 +124,8 @@ func (b baseRepository[T]) Insert(model *T) (*T, error) {
 
 func (b baseRepository[T]) BatchInsert(models []*T) ([]*T, error) {
 	if err := b.tx.Create(models).Error; err != nil {
+		b.logger.Error("could not batch insert into database", "error", err.Error())
+
 		return nil, ErrCouldNotBatchInsert
 	}
 
@@ -117,6 +134,8 @@ func (b baseRepository[T]) BatchInsert(models []*T) ([]*T, error) {
 
 func (b baseRepository[T]) Update(model *T) (*T, error) {
 	if err := b.tx.Updates(model).Error; err != nil {
+		b.logger.Error("could not update the record", "error", err.Error())
+
 		return nil, ErrCouldNotUpdate
 	}
 
@@ -125,6 +144,8 @@ func (b baseRepository[T]) Update(model *T) (*T, error) {
 
 func (b baseRepository[T]) Save(model *T) (*T, error) {
 	if err := b.tx.Save(model).Error; err != nil {
+		b.logger.Error("could not save the record", "error", err.Error())
+
 		return nil, ErrCouldNotSave
 	}
 
@@ -133,6 +154,8 @@ func (b baseRepository[T]) Save(model *T) (*T, error) {
 
 func (b baseRepository[T]) Delete(model *T) error {
 	if err := b.tx.Unscoped().Delete(model).Error; err != nil {
+		b.logger.Error("could not delete the record", "error", err.Error())
+
 		return ErrCouldNotDelete
 	}
 
@@ -141,6 +164,8 @@ func (b baseRepository[T]) Delete(model *T) error {
 
 func (b baseRepository[T]) SoftDelete(model *T) error {
 	if err := b.tx.Delete(model).Error; err != nil {
+		b.logger.Error("could not soft delete the record", "error", err.Error())
+
 		return ErrCouldNotDelete
 	}
 

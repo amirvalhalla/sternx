@@ -3,9 +3,9 @@ package grpc
 import (
 	"context"
 	"errors"
+	"fmt"
 
 	"github.com/google/uuid"
-	"golang.org/x/crypto/scrypt"
 	"sternx/config"
 	"sternx/domain"
 	"sternx/infrastructure/logger"
@@ -38,12 +38,16 @@ func newUserServer(
 }
 
 func (s *userServer) CreateUser(ctx context.Context, request *sternx.CreateUserRequest) (*sternx.UserResponse, error) {
+	s.SubLogger.Trace(fmt.Sprintf("a request with email: %s comes to create user", request.Email))
+
 	if util.IsStringEmpty(request.Email) || util.IsStringEmpty(request.Password) {
 		return nil, errors.New("email or password could not be empty")
 	}
 
-	hashedPassword, err := scrypt.Key([]byte(request.Password), s.config.PasswordSalt, 16384, 8, 1, 32)
+	hashedPassword, err := util.EncryptPassword(request.Password, s.config.PasswordSalt)
 	if err != nil {
+		s.SubLogger.Error("could not encrypt the password", "error", err.Error())
+
 		return nil, ErrInternalServerError
 	}
 
@@ -76,6 +80,8 @@ func (s *userServer) CreateUser(ctx context.Context, request *sternx.CreateUserR
 }
 
 func (s *userServer) GetUserByID(ctx context.Context, request *sternx.GetUserRequest) (*sternx.UserResponse, error) {
+	s.SubLogger.Trace(fmt.Sprintf("a request with id: %s comes to get user", request.Id))
+
 	if util.IsStringEmpty(request.Id) {
 		return nil, errors.New("id could not be empty")
 	}
@@ -102,6 +108,9 @@ func (s *userServer) GetUserByID(ctx context.Context, request *sternx.GetUserReq
 }
 
 func (s *userServer) GetUsers(ctx context.Context, request *sternx.GetUsersRequest) (*sternx.GetUsersResponse, error) {
+	s.SubLogger.Trace(fmt.Sprintf("a request with page_index: %d and page_size: %d comes to get all users",
+		request.PageIndex, request.PageSize))
+
 	var userEntities []domain.User
 	var totalRecords int64
 	var err error
@@ -138,6 +147,8 @@ func (s *userServer) GetUsers(ctx context.Context, request *sternx.GetUsersReque
 }
 
 func (s *userServer) UpdateUser(ctx context.Context, request *sternx.UpdateUserRequest) (*sternx.UserResponse, error) {
+	s.SubLogger.Trace(fmt.Sprintf("a request with id: %s comes to update user", request.Email))
+
 	if util.IsStringEmpty(request.Id) {
 		return nil, errors.New("id could not be empty")
 	}
@@ -169,8 +180,10 @@ func (s *userServer) UpdateUser(ctx context.Context, request *sternx.UpdateUserR
 		}
 
 		if !util.IsStringEmpty(request.Password) {
-			hashedPassword, err := scrypt.Key([]byte(request.Password), s.config.PasswordSalt, 16384, 8, 1, 32)
+			hashedPassword, err := util.EncryptPassword(request.Password, s.config.PasswordSalt)
 			if err != nil {
+				s.SubLogger.Error("could not encrypt the password", "error", err.Error())
+
 				return ErrInternalServerError
 			}
 			findUser.Password = hashedPassword
@@ -200,6 +213,8 @@ func (s *userServer) UpdateUser(ctx context.Context, request *sternx.UpdateUserR
 func (s *userServer) DeleteUser(ctx context.Context, request *sternx.DeleteUserRequest) (*sternx.DeleteUserResponse,
 	error,
 ) {
+	s.SubLogger.Trace(fmt.Sprintf("a request with id: %s comes to delete user", request.Id))
+
 	if util.IsStringEmpty(request.Id) {
 		return nil, errors.New("id could not be empty")
 	}
