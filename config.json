@@ -1,0 +1,6 @@
+{
+  "grpc_listen": "127.0.0.1:50051",
+  "grpc_gateway_listen": "127.0.0.1:8080",
+  "log_level": "trace",
+  "dsn": "host=localhost user=postgres password=postgres dbname=postgres port=5432 sslmode=disable TimeZone=UTC"
+}

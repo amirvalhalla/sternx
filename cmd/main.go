@@ -11,7 +11,11 @@ import (
 )
 
 func main() {
-	cfg := config.Default()
+	cfg, err := config.Default()
+	if err != nil {
+		logger.Panic("could not initialize config", "error", err.Error())
+	}
+
 	logger.InitGlobalLogger(cfg)
 
 	uow := repository.NewUnitOfWork()
@@ -20,7 +24,7 @@ func main() {
 	}
 
 	s := grpc.NewServer(cfg, uow)
-	err := s.StartServer()
+	err = s.StartServer()
 
 	log.Println(err)
 	for {
