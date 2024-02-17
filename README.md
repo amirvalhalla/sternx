@@ -29,3 +29,7 @@ make fmt
 ```bash
 make check
 ```
+- For building the proto files Run below command
+```bash
+make proto
+```
