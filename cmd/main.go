@@ -1,9 +1,6 @@
 package main
 
 import (
-	"log"
-	"time"
-
 	"sternx/config"
 	"sternx/infrastructure/logger"
 	"sternx/infrastructure/repository"
@@ -25,9 +22,10 @@ func main() {
 
 	s := grpc.NewServer(cfg, uow)
 	err = s.StartServer()
-
-	log.Println(err)
-	for {
-		<-time.After(time.Second)
+	if err != nil {
+		logger.Panic("could not start the grp server", "error", err.Error())
 	}
+
+	done := make(chan bool)
+	<-done
 }

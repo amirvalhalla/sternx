@@ -14,6 +14,13 @@ go run cmd/main.go
 ```
 - By default, GRPC Gateway accessible at `localhost:8080` and GRPC Server accessible at
 `loclahost:50051`
+- You can change GRPC Gateway port , DSN etc. at `confg.json` file in root of the project.
+- Tip: if you changed the GRPC Gateway port or GRPC Server port, please read Contribution Guide
+or you need to do 2 steps:
+```bash
+make devtools
+make proto
+```
 
 ### Contribution Guide
 - Install Make tool
